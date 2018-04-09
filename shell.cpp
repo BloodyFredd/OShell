@@ -319,10 +319,9 @@ int ownCmdHandler(char** parsed, int *length)
     case 2:
 	
 	if(*length==1)
-		cout<<"cd: not enough arguments\n";
+		res=chdir(getenv("HOME"));
 	else
-	{
-        	res=chdir(parsed[1]);
+        res=chdir(parsed[1]);
 		if(res==-1)
 	  	{
 			perror("cd failed");
@@ -330,7 +329,6 @@ int ownCmdHandler(char** parsed, int *length)
 	  	}
 		else
 			ExitCode=0;
-	}        
 	return 1;
     case 3:
         return 1;
